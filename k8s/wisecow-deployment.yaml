@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wisecow-nginx
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wisecow-nginx
+  template:
+    metadata:
+      labels:
+        app: wisecow-nginx
+    spec:
+      containers:
+        - name: wisecow-nginx
+          image: ayubazmi/wisecowimg:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4499

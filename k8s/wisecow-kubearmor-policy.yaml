@@ -1,0 +1,13 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: block-ls
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: wisecow-nginx
+  process:
+    matchPaths:
+      - path: "/bin/ls"
+        action: Block
